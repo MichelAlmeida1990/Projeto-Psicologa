@@ -209,16 +209,23 @@ body.loaded {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    position: relative;
 }
 
-.logo-icon svg {
-    transition: all 0.3s ease;
-    filter: drop-shadow(0 4px 8px rgba(99, 102, 241, 0.3));
+
+
+.logo-icon img {
+    width: 60px;
+    height: 60px;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    filter: drop-shadow(0 4px 8px rgba(217, 70, 239, 0.3));
+    border-radius: 50%;
+    object-fit: cover;
 }
 
-.logo-icon:hover svg {
-    transform: scale(1.1);
-    filter: drop-shadow(0 6px 12px rgba(99, 102, 241, 0.4));
+.logo-icon:hover img {
+    transform: scale(1.05) rotate(-2deg);
+    filter: drop-shadow(0 8px 16px rgba(217, 70, 239, 0.5));
 }
 
 .logo-text {
@@ -426,8 +433,8 @@ body.loaded {
     line-height: 1.7;
     font-family: 'Dancing Script', cursive;
     font-style: italic;
-    color: #d946ef;
-    text-shadow: 2px 2px 4px rgba(217, 70, 239, 0.3);
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     margin-left: auto;
     margin-right: auto;
     display: block;
@@ -1364,115 +1371,9 @@ section {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-    .nav-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        width: 100%;
-        max-width: 100%;
-        background: white;
-        flex-direction: column;
-        padding: 1rem;
-        box-shadow: var(--shadow);
-        overflow: hidden;
-    }
+/* Media queries antigas removidas - substituídas pelas novas */
 
-    .nav-menu.active {
-        display: flex;
-    }
-
-    .nav-toggle {
-        display: flex;
-    }
-
-    .hero-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 2rem;
-    }
-
-    .hero-title {
-        font-size: 2rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1.1rem;
-    }
-
-    .about-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .contact-content {
-        grid-template-columns: 1fr;
-    }
-
-    .tcc-content {
-        grid-template-columns: 1fr;
-    }
-
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .treatment-steps {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-buttons {
-        justify-content: center;
-    }
-
-    .btn {
-        padding: 0.8rem 1.5rem;
-        font-size: 0.9rem;
-    }
-
-    section {
-        padding: 3rem 0;
-    }
-
-    .section-title {
-        font-size: 2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero {
-        padding: 90px 5px 20px 5px;
-        min-height: 100vh;
-        overflow: visible;
-    }
-
-    .hero-content {
-        max-width: 100%;
-        padding: 5px;
-    }
-
-    .hero-title {
-        font-size: 2.4rem;
-        line-height: 1.3;
-        margin-bottom: 15px;
-        padding: 0;
-        word-wrap: break-word;
-        overflow: visible;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.4rem;
-        margin-bottom: 25px;
-        line-height: 1.4;
-    }
-    
-    .hero-cta {
-        padding: 12px 28px;
-        font-size: 1rem;
-    }
-}
+/* Media query antiga de 480px removida - substituída pela nova */
 
 /* Força overflow visible em todas as resoluções */
 .hero,
@@ -1510,6 +1411,20 @@ section {
 .loading-logo {
     margin-bottom: 20px;
     animation: pulse 2s ease-in-out infinite;
+}
+
+.loading-logo img {
+    border-radius: 50%;
+    box-shadow: 0 8px 32px rgba(168, 85, 247, 0.4);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.loading-logo img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px rgba(168, 85, 247, 0.6);
 }
 
 .loading-text {
@@ -1902,44 +1817,1250 @@ html {
     }
 } 
 
-/* Responsividade mobile - Hero */
-@media (max-width: 768px) {
-    .hero {
-        padding: 100px 10px 30px 10px;
-        min-height: 100vh;
-        overflow: visible;
-    }
+/* Media query duplicada removida - já existe versão melhorada acima */ 
 
+/* Responsividade mobile melhorada */
+@media (max-width: 768px) {
+    /* Container e espaçamentos */
+    .container {
+        padding: 0 15px;
+        max-width: 100%;
+    }
+    
+    /* Header e navegação */
+    .nav-container {
+        padding: 0.8rem 15px;
+    }
+    
+    .logo {
+        gap: 10px;
+    }
+    
+    .logo-icon img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .logo h1 {
+        font-size: 1.2rem;
+    }
+    
+    .logo-subtitle {
+        font-size: 0.8rem;
+    }
+    
+    .logo .crp {
+        font-size: 0.7rem;
+    }
+    
+    /* Menu mobile - removido duplicação */
+    
+    /* Hero section */
+    .hero {
+        padding: 120px 15px 60px 15px;
+        min-height: 100vh;
+        text-align: center;
+    }
+    
     .hero-content {
         max-width: 100%;
-        padding: 10px;
-    }
-
-    .hero-title {
-        font-size: 2.8rem;
-        white-space: normal;
-        line-height: 1.3;
-        overflow: visible;
-        margin-bottom: 20px;
         padding: 0;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
         word-wrap: break-word;
+        overflow-wrap: break-word;
     }
     
     .hero-subtitle {
-        font-size: 1.6rem;
-        margin-bottom: 30px;
-        white-space: normal;
-        line-height: 1.5;
+        font-size: 1.3rem;
+        line-height: 1.4;
+        margin-bottom: 2rem;
+        padding: 0 10px;
     }
     
     .hero-cta {
-        padding: 14px 32px;
+        padding: 15px 30px;
         font-size: 1.1rem;
+        margin: 0 auto;
     }
     
+    /* About section */
+    .about-content {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .about-text {
+        order: 2;
+    }
+    
+    .about-photo {
+        order: 1;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    .about-photo img {
+        width: 100%;
+        height: auto;
+        max-width: 300px;
+    }
+    
+    /* Services section */
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .service-card {
+        padding: 1.5rem;
+        margin: 0;
+    }
+    
+    /* Treatment section */
+    .treatment-steps {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .step {
+        padding: 1.5rem;
+        text-align: center;
+    }
+    
+    /* TCC section */
+    .tcc-content {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .tcc-image {
+        order: 1;
+        max-width: 100%;
+    }
+    
+    .tcc-text {
+        order: 2;
+    }
+    
+    .tcc-img {
+        width: 100%;
+        height: auto;
+        max-width: 400px;
+    }
+    
+    /* Contact section */
+    .contact-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .contact-methods {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .contact-method {
+        padding: 1rem;
+        text-align: center;
+    }
+    
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    /* Sections gerais */
+    section {
+        padding: 3rem 0;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    /* Animações mobile */
     .animated-subtitle .sub-letter {
         display: inline;
         animation: none;
         opacity: 1;
     }
+    
+    /* Scroll indicator */
+    .scroll-indicator {
+        display: none;
+    }
+    
+    /* Particles */
+    .particles-container {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Ajustes para telas muito pequenas */
+    .container {
+        padding: 0 10px;
+    }
+    
+    .nav-container {
+        padding: 0.6rem 10px;
+    }
+    
+    .logo-icon img {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .logo h1 {
+        font-size: 1.1rem;
+    }
+    
+    .logo-subtitle {
+        font-size: 0.7rem;
+    }
+    
+    .logo .crp {
+        font-size: 0.6rem;
+    }
+    
+    /* Hero section */
+    .hero {
+        padding: 100px 10px 40px 10px;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+        line-height: 1.3;
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-cta {
+        padding: 12px 24px;
+        font-size: 1rem;
+    }
+    
+    /* About section */
+    .about-photo {
+        max-width: 250px;
+    }
+    
+    .about-photo img {
+        max-width: 250px;
+    }
+    
+    /* Service cards */
+    .service-card {
+        padding: 1.2rem;
+    }
+    
+    .service-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .service-card p {
+        font-size: 0.9rem;
+    }
+    
+    /* Steps */
+    .step {
+        padding: 1.2rem;
+    }
+    
+    .step h3 {
+        font-size: 1.1rem;
+    }
+    
+    .step p {
+        font-size: 0.9rem;
+    }
+    
+    /* Contact */
+    .contact-method {
+        padding: 0.8rem;
+    }
+    
+    .contact-method h4 {
+        font-size: 1rem;
+    }
+    
+    .contact-method p {
+        font-size: 0.9rem;
+    }
+    
+    /* Form */
+    .contact-form {
+        padding: 1.5rem;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+    
+    /* Section titles */
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 360px) {
+    /* Ajustes para telas extremamente pequenas */
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .hero-cta {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .section-title {
+        font-size: 1.6rem;
+    }
+    
+    .service-card {
+        padding: 1rem;
+    }
+    
+    .step {
+        padding: 1rem;
+    }
+}
+
+/* Animações para menu mobile */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Prevenir overflow horizontal */
+html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+/* Garantir que todos os elementos respeitem o container */
+* {
+    box-sizing: border-box;
+}
+
+/* Ajustes específicos para evitar overflow */
+.hero,
+.hero-content,
+.hero-title,
+.hero-subtitle {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    max-width: 100%;
+}
+
+/* Melhorar acessibilidade do menu mobile */
+@media (max-width: 768px) {
+    body.nav-open {
+        overflow: hidden;
+    }
+    
+    .nav-menu {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .nav-menu a:focus {
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+    }
 } 
+
+/* Melhorias específicas para mobile */
+@media (max-width: 768px) {
+    .contact-form {
+        padding: 1.5rem;
+        margin: 0;
+        width: 100%;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        font-size: 16px; /* Evita zoom no iOS */
+        padding: 15px;
+        border-radius: 8px;
+    }
+    
+    .btn {
+        width: 100%;
+        padding: 15px;
+        font-size: 1rem;
+        border-radius: 8px;
+    }
+    
+    /* Melhorar espaçamento dos cards */
+    .service-card {
+        margin-bottom: 1rem;
+    }
+    
+    /* Ajustar imagens responsivas */
+    .about-photo img,
+    .tcc-img {
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Melhorar legibilidade do texto */
+    .about-text p,
+    .tcc-text p,
+    .faq-answer p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    /* Ajustar espaçamento das seções */
+    .about,
+    .services,
+    .treatment,
+    .tcc,
+    .faq,
+    .contact {
+        padding: 2.5rem 0;
+    }
+    
+    /* Melhorar FAQ mobile */
+    .faq-question {
+        padding: 1rem;
+        font-size: 1rem;
+        text-align: left;
+    }
+    
+    .faq-answer {
+        padding: 0 1rem 1rem 1rem;
+    }
+    
+    .faq-answer p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+    
+    /* Melhorar botão de voltar ao topo */
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--purple-gradient);
+        box-shadow: 0 4px 20px rgba(217, 70, 239, 0.3);
+    }
+    
+    /* Melhorar loading screen */
+    .loading-content {
+        padding: 0 20px;
+    }
+    
+    .loading-logo img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .loading-text {
+        font-size: 1rem;
+    }
+    
+    .loading-bar {
+        width: 150px;
+    }
+}
+
+/* Melhorias para telas muito pequenas */
+@media (max-width: 480px) {
+    .contact-form {
+        padding: 1rem;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        padding: 12px;
+        font-size: 16px;
+    }
+    
+    .btn {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+    
+    .faq-question {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+    
+    .faq-answer {
+        padding: 0 0.8rem 0.8rem 0.8rem;
+    }
+    
+    .faq-answer p {
+        font-size: 0.85rem;
+    }
+    
+    .back-to-top {
+        bottom: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* Menu mobile corrigido */
+@media (max-width: 768px) {
+    /* Garantir que o toggle seja visível */
+    .nav-toggle {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        z-index: 1001;
+        background: none;
+        border: none;
+        padding: 0;
+    }
+    
+    /* Menu mobile base */
+    .nav-menu {
+        display: none;
+        position: fixed;
+        top: 100%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        padding: 2rem 1rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        border-top: 1px solid rgba(217, 70, 239, 0.2);
+        z-index: 1000;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        transform: translateY(-100%);
+        transition: transform 0.3s ease-out;
+    }
+    
+    /* Menu ativo */
+    .nav-menu.active {
+        display: flex !important;
+        transform: translateY(0);
+        animation: slideDown 0.3s ease-out;
+    }
+    
+    /* Itens do menu */
+    .nav-menu li {
+        margin: 0.5rem 0;
+        width: 100%;
+        text-align: center;
+        list-style: none;
+    }
+    
+    /* Links do menu */
+    .nav-menu a {
+        display: block;
+        padding: 1rem;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        color: var(--text-color);
+        font-weight: 500;
+    }
+    
+    .nav-menu a:hover {
+        background: rgba(217, 70, 239, 0.1);
+        transform: translateX(5px);
+        color: var(--primary-color);
+    }
+    
+    .nav-menu a:focus {
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+        background: rgba(217, 70, 239, 0.1);
+    }
+    
+    /* Toggle button */
+    .nav-toggle span {
+        width: 25px;
+        height: 3px;
+        background: var(--primary-color);
+        margin: 3px 0;
+        transition: all 0.3s ease;
+        border-radius: 2px;
+        display: block;
+    }
+    
+    /* Animação do toggle */
+    .nav-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .nav-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+    
+    /* Prevenir scroll quando menu está aberto */
+    body.nav-open {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+    }
+    
+    /* Melhorar scroll do menu */
+    .nav-menu {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Melhorias para tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        padding: 0 30px;
+    }
+    
+    .hero-title {
+        font-size: 3.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.8rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .treatment-steps {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .contact-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+}
+
+/* Melhorias para telas grandes */
+@media (min-width: 1025px) {
+    .container {
+        max-width: 1400px;
+        padding: 0 40px;
+    }
+    
+    .hero-title {
+        font-size: 4.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 2.2rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+    }
+    
+    .treatment-steps {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+    }
+}
+
+/* Melhorias de acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    .nav-menu {
+        transition: none;
+    }
+    
+    .nav-menu.active {
+        animation: none;
+    }
+    
+    .hero-cta:hover {
+        transform: none;
+    }
+    
+    .service-card:hover {
+        transform: none;
+    }
+    
+    .step:hover {
+        transform: none;
+    }
+}
+
+/* Melhorias para impressão */
+@media print {
+    .nav-toggle,
+    .scroll-indicator,
+    .particles-container,
+    .back-to-top,
+    .loading-screen {
+        display: none !important;
+    }
+    
+    .nav-menu {
+        display: flex !important;
+        position: static !important;
+        background: none !important;
+        box-shadow: none !important;
+        flex-direction: row !important;
+        padding: 0 !important;
+    }
+    
+    .nav-menu li {
+        margin: 0 1rem 0 0;
+    }
+    
+    .nav-menu a {
+        color: black !important;
+        text-decoration: underline;
+        padding: 0.5rem !important;
+    }
+    
+    .hero {
+        background: none !important;
+        color: black !important;
+        padding: 2rem 0 !important;
+    }
+    
+    .hero-title,
+    .hero-subtitle {
+        color: black !important;
+    }
+    
+    .service-card,
+    .step {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+}
+
+/* Botão Voltar ao Topo */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: var(--purple-gradient);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 32px rgba(217, 70, 239, 0.3);
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    z-index: 1000;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(217, 70, 239, 0.4);
+    background: linear-gradient(135deg, #a855f7, #d946ef);
+}
+
+.back-to-top:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.back-to-top svg {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.back-to-top:hover svg {
+    transform: translateY(-2px);
+}
+
+/* Melhorias para mobile */
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .back-to-top svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .back-to-top {
+        bottom: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+    }
+    
+    .back-to-top svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* Melhorias para acessibilidade e mobile */
+.keyboard-navigation *:focus {
+    outline: 2px solid var(--primary-color) !important;
+    outline-offset: 2px !important;
+}
+
+/* Melhorar performance de animações */
+@media (prefers-reduced-motion: reduce) {
+    .particle,
+    .floating-element,
+    .hero-cta,
+    .service-card,
+    .step {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Melhorar carregamento de fontes */
+.fonts-loaded {
+    font-display: swap;
+}
+
+/* Melhorar estados de foco para mobile */
+@media (max-width: 768px) {
+    .hero-cta:focus,
+    .btn:focus,
+    input:focus,
+    textarea:focus {
+        outline: 2px solid var(--primary-color) !important;
+        outline-offset: 2px !important;
+    }
+    
+    /* Melhorar área de toque */
+    .hero-cta,
+    .btn {
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Melhorar feedback visual */
+    .hero-cta:active,
+    .btn:active {
+        transform: scale(0.95);
+        transition: transform 0.1s ease;
+    }
+}
+
+/* Melhorar formulário mobile */
+@media (max-width: 768px) {
+    .form-group.focused input,
+    .form-group.focused textarea {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(217, 70, 239, 0.1);
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(217, 70, 239, 0.1);
+    }
+}
+
+/* Melhorar loading screen para mobile */
+@media (max-width: 768px) {
+    .loading-screen {
+        background: var(--purple-gradient);
+    }
+    
+    .loading-content {
+        padding: 0 20px;
+        text-align: center;
+    }
+    
+    .loading-logo img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .loading-text {
+        font-size: 1rem;
+        margin: 1rem 0;
+    }
+    
+    .loading-bar {
+        width: 150px;
+        height: 4px;
+    }
+}
+
+/* Melhorar scroll indicator para mobile */
+@media (max-width: 768px) {
+    .scroll-indicator {
+        display: none;
+    }
+}
+
+/* Melhorar particles para mobile */
+@media (max-width: 768px) {
+    .particles-container {
+        display: none;
+    }
+}
+
+/* Melhorar animações de texto para mobile */
+@media (max-width: 768px) {
+    .animated-text .letter,
+    .animated-subtitle .sub-letter {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+/* Melhorar performance geral */
+@media (max-width: 768px) {
+    * {
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .hero-cta:hover,
+    .service-card:hover,
+    .step:hover {
+        transform: none !important;
+    }
+    
+    /* Melhorar scroll */
+    html {
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* Melhorar acessibilidade geral */
+@media (prefers-reduced-motion: reduce) {
+    .hero-cta:hover,
+    .service-card:hover,
+    .step:hover,
+    .nav-menu a:hover {
+        transform: none !important;
+    }
+    
+    .particle,
+    .floating-element {
+        animation: none !important;
+    }
+}
+
+/* Melhorar impressão */
+@media print {
+    .nav-toggle,
+    .scroll-indicator,
+    .particles-container,
+    .back-to-top,
+    .loading-screen {
+        display: none !important;
+    }
+    
+    .nav-menu {
+        display: flex !important;
+        position: static !important;
+        background: none !important;
+        box-shadow: none !important;
+        flex-direction: row !important;
+        padding: 0 !important;
+    }
+    
+    .nav-menu li {
+        margin: 0 1rem 0 0;
+    }
+    
+    .nav-menu a {
+        color: black !important;
+        text-decoration: underline;
+        padding: 0.5rem !important;
+    }
+    
+    .hero {
+        background: none !important;
+        color: black !important;
+        padding: 2rem 0 !important;
+    }
+    
+    .hero-title,
+    .hero-subtitle {
+        color: black !important;
+    }
+    
+    .service-card,
+    .step {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+}
+
+/* Melhorias específicas para o menu mobile */
+@media (max-width: 768px) {
+    /* Garantir que o header tenha z-index correto */
+    .header {
+        z-index: 1000;
+    }
+    
+    /* Melhorar visibilidade do toggle */
+    .nav-toggle {
+        position: relative;
+        z-index: 1001;
+    }
+    
+    /* Melhorar menu mobile */
+    .nav-menu {
+        z-index: 999;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    
+    /* Melhorar animação do menu */
+    .nav-menu {
+        transform: translateY(-100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .nav-menu.active {
+        transform: translateY(0);
+    }
+    
+    /* Melhorar feedback visual dos links */
+    .nav-menu a {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .nav-menu a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(217, 70, 239, 0.1), transparent);
+        transition: left 0.3s ease;
+    }
+    
+    .nav-menu a:hover::before {
+        left: 100%;
+    }
+    
+    /* Melhorar toggle button */
+    .nav-toggle span {
+        transform-origin: center;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .nav-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+    
+    .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+        transform: scale(0);
+    }
+    
+    .nav-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+    
+    /* Melhorar scroll do menu */
+    .nav-menu {
+        scrollbar-width: thin;
+        scrollbar-color: var(--primary-color) transparent;
+    }
+    
+    .nav-menu::-webkit-scrollbar {
+        width: 4px;
+    }
+    
+    .nav-menu::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    
+    .nav-menu::-webkit-scrollbar-thumb {
+        background: var(--primary-color);
+        border-radius: 2px;
+    }
+    
+    /* Melhorar acessibilidade */
+    .nav-menu a:focus {
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+        background: rgba(217, 70, 239, 0.1);
+    }
+    
+    /* Prevenir problemas de overflow */
+    body.nav-open {
+        overflow: hidden !important;
+        position: fixed !important;
+        width: 100% !important;
+        height: 100% !important;
+    }
+    
+    /* Melhorar performance */
+    .nav-menu * {
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
+/* Melhorias para telas muito pequenas */
+@media (max-width: 480px) {
+    .nav-menu {
+        padding: 1.5rem 1rem;
+    }
+    
+    .nav-menu a {
+        padding: 0.8rem;
+        font-size: 1rem;
+    }
+    
+    .nav-toggle {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .nav-toggle span {
+        width: 22px;
+        height: 2px;
+    }
+}
+
+/* Melhorias para acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    .nav-menu {
+        transition: none;
+    }
+    
+    .nav-menu.active {
+        animation: none;
+    }
+    
+    .nav-toggle span {
+        transition: none;
+    }
+}
+
+@media (max-width: 768px) {
+  /* MENU MOBILE ÚNICO E FUNCIONAL */
+  .nav-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255,255,255,0.98);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 2rem 1rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    transform: translateY(-100%);
+    overflow-y: auto;
+  }
+  .nav-menu.active {
+    display: flex !important;
+    transform: translateY(0);
+    animation: slideDown 0.3s ease-out;
+  }
+  .nav-toggle {
+    display: flex;
+    z-index: 1001;
+  }
+  .nav-menu li {
+    margin: 1rem 0;
+    width: 100%;
+    text-align: center;
+  }
+  .nav-menu a {
+    display: block;
+    padding: 1.2rem;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    transition: all 0.3s;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+  }
+  .nav-menu a:hover,
+  .nav-menu a:focus {
+    background: rgba(217, 70, 239, 0.1);
+    color: var(--primary-color);
+    outline: none;
+  }
+  body.nav-open {
+    overflow: hidden !important;
+    position: fixed !important;
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+}
+
+/* Remover duplicatas problemáticas do menu mobile */
+/* (As duplicatas serão sobrescritas por esta regra mais específica) */

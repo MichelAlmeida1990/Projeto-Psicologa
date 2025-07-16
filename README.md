@@ -1,167 +1,161 @@
-# Site da Psicóloga Ligia Silva
+# 🧠 Psicóloga Ligia Silva - Website Profissional
 
-Site profissional desenvolvido para a Psicóloga Ligia Silva (CRP: 06/200449), especialista em Terapia Cognitivo-Comportamental (TCC).
+Site profissional responsivo para a Psicóloga Ligia Silva, especialista em Terapia Cognitivo-Comportamental (TCC).
 
-## 📋 Sobre o Projeto
+## ✨ Características
 
-Este site foi criado com foco em apresentar os serviços de psicoterapia da Dra. Ligia Silva de forma profissional e acessível. O design é moderno, responsivo e otimizado para conversão de visitantes em pacientes.
+### 🎨 Design Moderno
+- Design elegante com paleta roxa
+- Animações suaves e interativas
+- Tipografia moderna (Playfair Display + Poppins)
+- Loading screen animada
 
-## 🎯 Funcionalidades
+### 📱 Responsividade Total
+- **Mobile First** - Otimizado para dispositivos móveis
+- **Tablet** - Layout adaptativo para tablets
+- **Desktop** - Experiência completa para telas grandes
+- **Acessibilidade** - Suporte a navegação por teclado e screen readers
 
-### ✨ Principais Características
-- **Design Responsivo**: Funciona perfeitamente em desktop, tablet e mobile
-- **Navegação Intuitiva**: Menu fixo com navegação suave entre seções
-- **Formulário de Contato**: Integração direta com WhatsApp para agendamentos
-- **FAQ Interativo**: Seção de perguntas frequentes com accordion
-- **Animações Suaves**: Efeitos visuais que melhoram a experiência do usuário
-- **SEO Otimizado**: Estrutura preparada para mecanismos de busca
+### 🚀 Performance Otimizada
+- Carregamento otimizado para mobile
+- Lazy loading de imagens
+- Animações otimizadas para dispositivos móveis
+- Preload de recursos críticos
 
-### 🔧 Funcionalidades Técnicas
-- Menu mobile com animação hamburger
+## 📱 Funcionalidades Mobile
+
+### 🍔 Menu Mobile Inteligente
+- Menu hambúrguer animado
+- Fechamento por gestos touch (swipe)
+- Navegação por teclado (ESC, Enter, Espaço)
+- Prevenção de scroll quando aberto
+
+### 👆 Gestos Touch
+- Swipe horizontal para fechar menu
+- Área de toque otimizada (44px mínimo)
+- Feedback visual em interações
 - Scroll suave entre seções
-- Efeitos de parallax
-- Animações de entrada (fade-in)
-- Botão "voltar ao topo"
-- Loading screen
-- Sistema de notificações
-- Validação de formulário
 
-## 🚀 Seções do Site
+### 📝 Formulário Mobile
+- Inputs com `font-size: 16px` (evita zoom no iOS)
+- Botões de largura total
+- Feedback visual de envio
+- Validação em tempo real
 
-1. **Hero Section**: Apresentação principal com call-to-action
-2. **Sobre**: Apresentação da psicóloga e suas qualificações
-3. **Áreas de Atendimento**: Serviços oferecidos com descrições detalhadas
-4. **Como Funciona o Tratamento**: Processo terapêutico explicado em etapas
-5. **TCC**: Explicação sobre Terapia Cognitivo-Comportamental
-6. **FAQ**: Dúvidas frequentes dos pacientes
-7. **Contato**: Formulário e informações para agendamento
-
-## 🎨 Design e Estilo
-
-### Paleta de Cores
-- **Primária**: `#4a90e2` (Azul profissional)
-- **Secundária**: `#2c3e50` (Azul escuro)
-- **Accent**: `#27ae60` (Verde)
-- **Texto**: `#333` (Cinza escuro)
-- **Texto Claro**: `#666` (Cinza médio)
-
-### Tipografia
-- **Fonte Principal**: Inter (Google Fonts)
-- **Fallback**: System fonts (Apple, Segoe UI, Roboto)
-
-## 📱 Responsividade
-
-O site foi desenvolvido com abordagem mobile-first e inclui:
-- Breakpoints para tablet (768px)
-- Breakpoints para mobile (480px)
-- Menu mobile otimizado
-- Imagens responsivas
-- Layouts adaptáveis
+### 🎯 Acessibilidade Mobile
+- Estados de foco visíveis
+- Navegação por teclado
+- Suporte a screen readers
+- Redução de motion para acessibilidade
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **HTML5**: Estrutura semântica
-- **CSS3**: Estilização moderna com Grid e Flexbox
-- **JavaScript**: Interatividade e funcionalidades
-- **Google Fonts**: Tipografia profissional
+- **HTML5** - Estrutura semântica
+- **CSS3** - Estilos modernos com CSS Grid e Flexbox
+- **JavaScript ES6+** - Interatividade e animações
+- **Fonts** - Google Fonts (Playfair Display, Poppins, Dancing Script)
 
-## 📁 Estrutura de Arquivos
+## 📁 Estrutura do Projeto
 
 ```
 Projeto Psicologa/
-├── index.html          # Arquivo principal
-├── styles.css          # Estilos CSS
-├── script.js           # JavaScript
+├── index.html          # Página principal
+├── styles.css          # Estilos responsivos
+├── script.js           # JavaScript interativo
+├── assets/
+│   └── image/          # Imagens otimizadas
+│       ├── logo.png
+│       ├── fundo.jpeg
+│       └── WhatsApp Images...
 ├── README.md           # Documentação
-└── assets/
-    └── image/
-        ├── WhatsApp Image 2025-07-14 at 19.04.00.jpeg
-        ├── WhatsApp Image 2025-07-14 at 19.04.24.jpeg
-        └── WhatsApp Image 2025-07-14 at 19.06.52.jpeg
+└── RESUMO_PROJETO.md  # Resumo do projeto
 ```
 
-## 🚀 Como Usar
+## 🎨 Seções do Site
 
-1. **Abrir o Site**:
-   - Clique duas vezes no arquivo `index.html`
-   - Ou abra em qualquer navegador moderno
+1. **Hero Section** - Apresentação principal
+2. **Sobre** - Informações profissionais
+3. **Áreas de Atendimento** - Serviços oferecidos
+4. **Como Funciona** - Processo terapêutico
+5. **TCC** - Explicação da abordagem
+6. **FAQ** - Perguntas frequentes
+7. **Contato** - Formulário e informações
 
-2. **Personalizar Informações**:
-   - Edite o arquivo `index.html` para alterar textos
-   - Substitua as imagens na pasta `assets/image/`
-   - Atualize o número do WhatsApp no arquivo `script.js`
+## 📱 Breakpoints Responsivos
 
-3. **Hospedagem**:
-   - Faça upload dos arquivos para qualquer servidor web
-   - Ou use serviços como Netlify, Vercel, GitHub Pages
+- **Mobile**: `max-width: 768px`
+- **Mobile Pequeno**: `max-width: 480px`
+- **Mobile Muito Pequeno**: `max-width: 360px`
+- **Tablet**: `min-width: 769px and max-width: 1024px`
+- **Desktop**: `min-width: 1025px`
 
-## 📞 Configuração do WhatsApp
+## 🚀 Como Executar
 
-Para configurar o número do WhatsApp:
+1. Clone o repositório
+2. Abra o terminal na pasta do projeto
+3. Execute: `npx http-server -p 8000`
+4. Acesse: `http://localhost:8000`
 
-1. Abra o arquivo `script.js`
-2. Localize a linha:
-   ```javascript
-   const whatsappNumber = '5511999999999';
-   ```
-3. Substitua pelo número real (formato: 55 + DDD + número)
+## 🎯 Melhorias Implementadas
 
-## 🎯 Áreas de Atendimento
+### ✅ Responsividade Mobile
+- Menu mobile totalmente funcional
+- Layout adaptativo para todas as telas
+- Otimização de performance para mobile
+- Gestos touch implementados
 
-- **Transtorno Depressivo**
-- **Transtorno Bipolar**
-- **Transtornos de Ansiedade**
-- **Transtorno de Insônia**
-- **Problemas de Relacionamento**
-- **Procrastinação e Construção de Hábitos**
-
-## 🔒 Recursos de Acessibilidade
-
+### ✅ Acessibilidade
 - Navegação por teclado
-- Contraste adequado
-- Textos alternativos em imagens
-- Estrutura semântica HTML5
-- Suporte a leitores de tela
+- Estados de foco visíveis
+- Suporte a screen readers
+- Redução de motion
 
-## 📊 Performance
+### ✅ Performance
+- Carregamento otimizado
+- Animações suaves
+- Lazy loading
+- Preload de recursos críticos
 
-- Carregamento rápido
-- Imagens otimizadas
-- CSS e JS minificados
-- Fonts otimizadas do Google
-- Lazy loading implementado
+### ✅ UX/UI
+- Feedback visual em interações
+- Loading screen elegante
+- Scroll progress bar
+- Botão "Voltar ao topo"
 
-## 🌐 Compatibilidade
+## 🔧 Funcionalidades JavaScript
 
-- Chrome (versão 60+)
-- Firefox (versão 55+)
-- Safari (versão 11+)
-- Edge (versão 16+)
-- Mobile browsers
+### 📱 Mobile-Specific
+- `setupMobileOptimizations()` - Otimizações para mobile
+- `setupTouchGestures()` - Gestos touch
+- `setupMobileAccessibility()` - Acessibilidade mobile
+- `setupMobileFormEnhancements()` - Formulário mobile
+- `setupMobileNavigation()` - Navegação mobile
 
-## 📈 SEO
+### 🎨 Animações
+- `setupAnimations()` - Animações otimizadas
+- `setupParallaxEffects()` - Efeitos parallax
+- `setupIntersectionObserver()` - Observer para animações
 
-- Meta tags otimizadas
-- Estrutura HTML5 semântica
-- URLs amigáveis
-- Schema markup ready
-- Sitemap preparado
+### 🚀 Performance
+- `setupErrorHandling()` - Tratamento de erros
+- `setupScrollPerformance()` - Performance de scroll
+- `setupResourceLoading()` - Carregamento de recursos
 
-## 🛡️ Segurança
+## 📞 Informações de Contato
 
-- Validação de formulários
-- Proteção contra spam
-- Links seguros
-- Dados não armazenados localmente
+- **Psicóloga**: Ligia Silva
+- **CRP**: 06/200449
+- **Especialidade**: Terapia Cognitivo-Comportamental (TCC)
+- **Atendimento**: Online via Google Meet
 
-## 📝 Licença
+## 🎨 Paleta de Cores
 
-Este projeto foi desenvolvido especificamente para a Psicóloga Ligia Silva. Todos os direitos reservados.
-
-## 🤝 Suporte
-
-Para dúvidas ou modificações no site, entre em contato com o desenvolvedor.
+- **Primary**: `#d946ef` (Roxo)
+- **Secondary**: `#a855f7` (Roxo escuro)
+- **Accent**: `#ffd700` (Dourado)
+- **Background**: `#ffffff` (Branco)
+- **Text**: `#374151` (Cinza escuro)
 
 ---
 
-**Desenvolvido com ❤️ para promover saúde mental e bem-estar** 
+**Desenvolvido com ❤️ para proporcionar uma experiência digital excepcional para a Psicóloga Ligia Silva.** 
