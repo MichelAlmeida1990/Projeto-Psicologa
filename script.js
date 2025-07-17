@@ -852,9 +852,9 @@ section {
     right: 30px;
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, #d946ef, #a855f7);
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
     color: white;
-    border: 2px solid #d946ef;
+    border: 2px solid #3b82f6;
     border-radius: 50%;
     cursor: pointer;
     opacity: 0;
@@ -862,7 +862,7 @@ section {
     transform: translateY(20px);
     transition: all 0.3s ease;
     z-index: 1000;
-    box-shadow: 0 4px 20px rgba(217, 70, 239, 0.3);
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
 }
 
 .back-to-top.visible {
@@ -873,8 +873,8 @@ section {
 
 .back-to-top:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(217, 70, 239, 0.5);
-    background: linear-gradient(135deg, #a855f7, #7c3aed);
+    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.5);
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
     color: white;
 }
 
@@ -886,7 +886,7 @@ section {
         right: -100%;
         width: 300px;
         height: 100vh;
-        background: linear-gradient(135deg, #6366f1, #a855f7);
+        background: linear-gradient(135deg, #3b82f6, #60a5fa);
         flex-direction: column;
         justify-content: center;
         align-items: center;
