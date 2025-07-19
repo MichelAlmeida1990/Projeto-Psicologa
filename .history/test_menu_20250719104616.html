@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Menu Mobile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <img src="assets/image/logo.png" alt="Logo Ligia Silva" width="60" height="60">
+                    </div>
+                    <div class="logo-text">
+                        <h1>Lígia Silva</h1>
+                        <span class="logo-subtitle">Psicóloga Clínica</span>
+                        <span class="crp">CRP: 06/200449</span>
+                    </div>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#areas">Áreas de Atendimento</a></li>
+                    <li><a href="#tratamento">Tratamento</a></li>
+                    <li><a href="#tcc">TCC</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+                <div class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Conteúdo de teste -->
+    <div style="padding-top: 100px; padding-left: 20px;">
+        <h1>Teste do Menu Mobile</h1>
+        <p>Redimensione a tela para menos de 768px para ver o menu mobile.</p>
+        <p>Clique no ícone de hambúrguer para abrir/fechar o menu.</p>
+        
+        <h2>Funcionalidades testadas:</h2>
+        <ul>
+            <li>✅ Toggle do menu (hambúrguer para X)</li>
+            <li>✅ Animação de entrada/saída</li>
+            <li>✅ Fechar ao clicar em um link</li>
+            <li>✅ Fechar ao clicar fora</li>
+            <li>✅ Fechar com tecla ESC</li>
+            <li>✅ Prevenir scroll quando aberto</li>
+            <li>✅ Acessibilidade (ARIA)</li>
+            <li>✅ Suporte a teclado</li>
+        </ul>
+    </div>
+
+    <script>
+        // Função simplificada para testar o menu
+        function setupMobileMenu() {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            const body = document.body;
+            
+            if (!navToggle || !navMenu) {
+                console.warn('Elementos do menu mobile não encontrados');
+                return;
+            }
+            
+            function closeMenu() {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+                body.classList.remove('nav-open');
+                body.style.overflow = '';
+                body.style.position = '';
+                body.style.width = '';
+                navToggle.setAttribute('aria-expanded', 'false');
+                navToggle.setAttribute('aria-label', 'Abrir menu de navegação');
+            }
+            
+            function openMenu() {
+                navMenu.classList.add('active');
+                navToggle.classList.add('active');
+                body.classList.add('nav-open');
+                body.style.overflow = 'hidden';
+                body.style.position = 'fixed';
+                body.style.width = '100%';
+                navToggle.setAttribute('aria-expanded', 'true');
+                navToggle.setAttribute('aria-label', 'Fechar menu de navegação');
+            }
+            
+            navToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                if (navMenu.classList.contains('active')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    setTimeout(() => {
+                        closeMenu();
+                    }, 100);
+                });
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (navMenu.classList.contains('active') && 
+                    !navToggle.contains(e.target) && 
+                    !navMenu.contains(e.target)) {
+                    closeMenu();
+                }
+            });
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                    closeMenu();
+                }
+            });
+            
+            navToggle.setAttribute('role', 'button');
+            navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.setAttribute('aria-label', 'Abrir menu de navegação');
+            navToggle.setAttribute('tabindex', '0');
+            
+            navToggle.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    if (navMenu.classList.contains('active')) {
+                        closeMenu();
+                    } else {
+                        openMenu();
+                    }
+                }
+            });
+            
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+                    closeMenu();
+                }
+            });
+            
+            closeMenu();
+        }
+        
+        // Inicializar quando o DOM estiver carregado
+        document.addEventListener('DOMContentLoaded', function() {
+            setupMobileMenu();
+            console.log('Menu mobile de teste inicializado');
+        });
+    </script>
+</body>
+</html> 
