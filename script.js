@@ -59,6 +59,65 @@ function setupAnimations() {
     document.querySelectorAll('.service-card, .step, .faq-item, .contact-method').forEach(el => {
         observer.observe(el);
     });
+    
+    // Inicializar animações das letras
+    setupLetterAnimations();
+    
+    // Inicializar animações das partículas
+    setupParticleAnimations();
+}
+
+// Função específica para animações das letras
+function setupLetterAnimations() {
+    const animatedText = document.querySelector('.animated-text');
+    const animatedSubtitle = document.querySelector('.animated-subtitle');
+    
+    if (animatedText) {
+        const letters = animatedText.querySelectorAll('.letter');
+        letters.forEach((letter, index) => {
+            // Garantir que as animações sejam aplicadas
+            letter.style.animation = `letterDrop 0.8s ease forwards`;
+            letter.style.animationDelay = `${0.1 + (index * 0.1)}s`;
+            letter.style.opacity = '0';
+            letter.style.transform = 'translateY(50px) rotateX(90deg)';
+        });
+    }
+    
+    if (animatedSubtitle) {
+        const subLetters = animatedSubtitle.querySelectorAll('.sub-letter');
+        subLetters.forEach((letter, index) => {
+            // Garantir que as animações sejam aplicadas
+            letter.style.animation = `letterFadeInOut 4s ease-in-out infinite`;
+            letter.style.animationDelay = `${0.1 + (index * 0.1)}s`;
+            letter.style.opacity = '0';
+        });
+    }
+    
+    console.log('✅ Animações das letras inicializadas');
+}
+
+// Função específica para animações das partículas
+function setupParticleAnimations() {
+    const particlesContainer = document.querySelector('.particles-container');
+    const particles = document.querySelectorAll('.particle');
+    
+    if (particlesContainer && particles.length > 0) {
+        particlesContainer.style.display = 'block';
+        particlesContainer.style.opacity = '0.6';
+        
+        particles.forEach((particle, index) => {
+            particle.style.display = 'block';
+            particle.style.animation = `float-particle ${8 + (index * 2)}s linear infinite`;
+            particle.style.animationDelay = `${index * 1}s`;
+            particle.style.opacity = '0.7';
+            particle.style.width = '6px';
+            particle.style.height = '6px';
+            particle.style.willChange = 'transform';
+            particle.style.transform = 'translateZ(0)';
+        });
+        
+        console.log('✅ Animações das partículas inicializadas');
+    }
 }
 
 // Melhorar performance de scroll
@@ -200,39 +259,49 @@ function setupLoadingScreen() {
     const loadingScreen = document.querySelector('.loading-screen');
     const loadingProgress = document.querySelector('.loading-progress');
     
-    if (!loadingScreen || !loadingProgress) return;
+    if (!loadingScreen || !loadingProgress) {
+        console.log('Loading screen elements not found');
+        return;
+    }
     
-    // Simulate loading progress - slower for better visualization
+    console.log('Loading screen setup started');
+    
+    // Simulate loading progress - more reliable
     let progress = 0;
     const progressInterval = setInterval(() => {
-        progress += Math.random() * 8; // Reduced from 15 to 8 for slower progress
+        progress += 2; // Fixed increment instead of random
         if (progress > 100) progress = 100;
         
         loadingProgress.style.width = progress + '%';
+        console.log('Loading progress:', progress + '%');
         
         if (progress >= 100) {
             clearInterval(progressInterval);
+            console.log('Loading complete, hiding screen');
             setTimeout(() => {
                 hideLoadingScreen();
-            }, 1000); // Increased from 500 to 1000ms
+            }, 500);
         }
-    }, 150); // Increased from 100 to 150ms for slower updates
+    }, 100);
 }
 
 function simulateLoading() {
-    // Simulate actual loading time - increased to 5 seconds for better visualization
+    // Shorter loading time for better UX
     setTimeout(() => {
         document.body.classList.add('loaded');
         isLoaded = true;
-    }, 5000);
+        console.log('Website loaded');
+    }, 3000);
 }
 
 function hideLoadingScreen() {
     const loadingScreen = document.querySelector('.loading-screen');
     if (loadingScreen) {
+        console.log('Hiding loading screen');
         loadingScreen.classList.add('hidden');
         setTimeout(() => {
             loadingScreen.style.display = 'none';
+            console.log('Loading screen hidden');
         }, 800);
     }
 }
