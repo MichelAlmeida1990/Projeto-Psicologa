@@ -507,49 +507,73 @@ function setupFormEnhancements() {
     });
 }
 
+// ==================== FUNÇÃO GLOBAL CLOSE MENU ====================
+function closeMenu() {
+    const navMenu = document.querySelector('.nav-menu');
+    const navToggle = document.querySelector('.nav-toggle');
+    const body = document.body;
+    
+    if (navMenu) navMenu.classList.remove('active');
+    if (navToggle) navToggle.classList.remove('active');
+    if (body) body.classList.remove('nav-open');
+    
+    // Reativar scroll
+    body.style.overflow = '';
+    body.style.position = '';
+    body.style.width = '';
+    
+    // Atualizar aria
+    if (navToggle) {
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', 'Abrir menu de navegação');
+    }
+}
+
 // ==================== MOBILE MENU ====================
 function setupMobileMenu() {
     const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    const navLinks = document.querySelectorAll('.nav-menu a');
+    const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+    const mobileMenuClose = document.querySelector('.mobile-menu-close');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
     const body = document.body;
-    const header = document.querySelector('.header');
     
-    if (!navToggle || !navMenu) {
+    if (!navToggle || !mobileMenuOverlay) {
         console.warn('Menu mobile não encontrado');
         return;
     }
     
-    // Função para fechar o menu
-    function closeMenu() {
-        navMenu.classList.remove('active');
-        navToggle.classList.remove('active');
-        body.classList.remove('nav-open');
-        
-        // Reativar scroll
-        body.style.overflow = '';
-        body.style.position = '';
-        body.style.width = '';
-        
-        // Atualizar aria
-        navToggle.setAttribute('aria-expanded', 'false');
-        navToggle.setAttribute('aria-label', 'Abrir menu de navegação');
-    }
-    
     // Função para abrir o menu
     function openMenu() {
-        navMenu.classList.add('active');
+        mobileMenuOverlay.classList.add('active');
         navToggle.classList.add('active');
         body.classList.add('nav-open');
         
         // Prevenir scroll do body
         body.style.overflow = 'hidden';
-        body.style.position = 'fixed';
-        body.style.width = '100%';
         
         // Atualizar aria
         navToggle.setAttribute('aria-expanded', 'true');
         navToggle.setAttribute('aria-label', 'Fechar menu de navegação');
+        
+        // Focar no primeiro item do menu
+        const firstMenuItem = mobileMenuOverlay.querySelector('a');
+        if (firstMenuItem) {
+            setTimeout(() => firstMenuItem.focus(), 300);
+        }
+    }
+    
+    // Função para fechar o menu
+    function closeMenu() {
+        mobileMenuOverlay.classList.remove('active');
+        navToggle.classList.remove('active');
+        body.classList.remove('nav-open');
+        
+        // Restaurar scroll do body
+        body.style.overflow = '';
+        
+        // Atualizar aria
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', 'Abrir menu de navegação');
     }
     
     // Toggle do menu
@@ -557,15 +581,24 @@ function setupMobileMenu() {
         e.preventDefault();
         e.stopPropagation();
         
-        if (navMenu.classList.contains('active')) {
+        if (mobileMenuOverlay.classList.contains('active')) {
             closeMenu();
         } else {
             openMenu();
         }
     });
     
+    // Fechar menu com botão X
+    if (mobileMenuClose) {
+        mobileMenuClose.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeMenu();
+        });
+    }
+    
     // Fechar menu ao clicar em um link
-    navLinks.forEach(link => {
+    mobileNavLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             // Aguardar um pouco para a animação de scroll
             setTimeout(() => {
@@ -576,16 +609,16 @@ function setupMobileMenu() {
     
     // Fechar menu ao clicar fora
     document.addEventListener('click', function(e) {
-        if (navMenu.classList.contains('active') && 
+        if (mobileMenuOverlay.classList.contains('active') && 
             !navToggle.contains(e.target) && 
-            !navMenu.contains(e.target)) {
+            !mobileMenuOverlay.querySelector('.mobile-menu').contains(e.target)) {
             closeMenu();
         }
     });
     
     // Fechar menu ao pressionar ESC
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+        if (e.key === 'Escape' && mobileMenuOverlay.classList.contains('active')) {
             closeMenu();
         }
     });
@@ -606,54 +639,42 @@ function setupMobileMenu() {
     
     // Fechar menu ao redimensionar a tela
     window.addEventListener('resize', function() {
-        if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+        if (window.innerWidth > 768 && mobileMenuOverlay.classList.contains('active')) {
             closeMenu();
         }
     });
     
-    // Melhorar performance em dispositivos móveis
-    let touchStartY = 0;
-    let touchEndY = 0;
+    // Suporte a gestos de toque
+    let startX = 0;
+    let startY = 0;
+    let isDragging = false;
     
-    navMenu.addEventListener('touchstart', function(e) {
-        touchStartY = e.touches[0].clientY;
+    mobileMenuOverlay.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        isDragging = false;
     }, { passive: true });
     
-    navMenu.addEventListener('touchmove', function(e) {
-        touchEndY = e.touches[0].clientY;
-    }, { passive: true });
-    
-    navMenu.addEventListener('touchend', function(e) {
-        const touchDiff = touchStartY - touchEndY;
-        
-        // Se o usuário deslizar para baixo no menu, fechar
-        if (touchDiff < -50 && navMenu.classList.contains('active')) {
-            closeMenu();
-        }
-    }, { passive: true });
-    
-    // Melhorar z-index do header quando menu está aberto
-    function updateHeaderZIndex() {
-        if (navMenu.classList.contains('active')) {
-            header.style.zIndex = '1002';
-        } else {
-            header.style.zIndex = '1000';
-        }
-    }
-    
-    // Observar mudanças no menu
-    const observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                updateHeaderZIndex();
+    mobileMenuOverlay.addEventListener('touchmove', function(e) {
+        if (!isDragging) {
+            const deltaX = Math.abs(e.touches[0].clientX - startX);
+            const deltaY = Math.abs(e.touches[0].clientY - startY);
+            
+            if (deltaX > deltaY && deltaX > 10) {
+                isDragging = true;
             }
-        });
-    });
+        }
+    }, { passive: true });
     
-    observer.observe(navMenu, {
-        attributes: true,
-        attributeFilter: ['class']
-    });
+    mobileMenuOverlay.addEventListener('touchend', function(e) {
+        if (isDragging) {
+            const deltaX = e.changedTouches[0].clientX - startX;
+            
+            if (deltaX > 50) {
+                closeMenu();
+            }
+        }
+    }, { passive: true });
     
     // Log de sucesso
     console.log('🍔 Menu mobile configurado com sucesso!');
@@ -852,9 +873,9 @@ section {
     right: 30px;
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    background: linear-gradient(135deg, #d946ef, #a855f7);
     color: white;
-    border: 2px solid #3b82f6;
+    border: 2px solid #d946ef;
     border-radius: 50%;
     cursor: pointer;
     opacity: 0;
@@ -862,7 +883,7 @@ section {
     transform: translateY(20px);
     transition: all 0.3s ease;
     z-index: 1000;
-    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 20px rgba(217, 70, 239, 0.3);
 }
 
 .back-to-top.visible {
@@ -873,8 +894,8 @@ section {
 
 .back-to-top:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.5);
-    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    box-shadow: 0 8px 30px rgba(217, 70, 239, 0.5);
+    background: linear-gradient(135deg, #a855f7, #7c3aed);
     color: white;
 }
 
@@ -886,7 +907,7 @@ section {
         right: -100%;
         width: 300px;
         height: 100vh;
-        background: linear-gradient(135deg, #3b82f6, #60a5fa);
+        background: linear-gradient(135deg, #6366f1, #a855f7);
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -1203,21 +1224,7 @@ function setupMobileNavigation() {
     });
 }
 
-// Função para fechar menu (usada em outras funções)
-function closeMenu() {
-    const navMenu = document.querySelector('.nav-menu');
-    const navToggle = document.querySelector('.nav-toggle');
-    const body = document.body;
-    
-    if (navMenu) navMenu.classList.remove('active');
-    if (navToggle) navToggle.classList.remove('active');
-    if (body) body.classList.remove('nav-open');
-    
-    // Reativar scroll
-    body.style.overflow = '';
-    body.style.position = '';
-    body.style.width = '';
-}
+/* REMOVIDO: Função closeMenu duplicada */
 
 // ==================== INITIALIZATION FOR MOBILE ====================
 
